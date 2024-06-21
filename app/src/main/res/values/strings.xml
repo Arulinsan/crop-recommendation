@@ -1,0 +1,74 @@
+<resources>
+    <string name="app_name">Crop Recommendation</string>
+    <string name="description_crop">Membuat keputusan berdasarkan informasi tentang strategi pertanian.</string>
+    <string name="about_desc">Aplikasi ini dibuat dengan tujuan agar dapat membuat sebuah strategi dalam penanaman bibit dengan keadaan iklim tertentu. Di bidang pertanian, rekomendasi tanaman yang tepat sangat penting dalam memastikan hasil optimal dan keberlanjutan.
+        \n\nDataset diambil dari website kaggle yang dibuat oleh <b><i>atharvaingle</i></b> dengan judul Crop Recommendation.
+    </string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="dataset_desc">Dataset terdiri dari <b><i>9 Kolom</i></b> dan <b><i>10 Baris</i></b> yang ditampilkan pada list dibawah, Kumpulan data yang dipertimbangkan mencakup banyak informasi yang mencakup faktor-faktor utama seperti
+        tingkat Nitrogen, Fosfor, dan Kalium, serta variabel lingkungan seperti Suhu, Kelembapan, Nilai_pH, dan Curah Hujan.\n\ndata ini sangat penting untuk membuat keputusan yang dapat meningkatkan produktivitas pertanian, pengelolaan sumber daya, dan kesehatan tanaman secara keseluruhan</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="about_work">Ada beberapa menu pilihan lain yang bisa dipilih pada aplikasi ini. pada menu pilihan dataset adalah untuk melihat dataset yang digunakan pada aplikasi, Menu pilihan fitur yaitu melihat fitur yang digunakan dalam model data, menu model yaitu merupakan tahapan proses modeling pada fitur, terakhir Simulasi melakukan simulasi data yang diinput agar bisa melihat rekomendasi tanaman yang bisa ditanam pada iklim yang sudah di tentukan.</string>
+    <string name="previous">Previous</string>
+    <string-array name="fitur_name">
+        <item>1). Nitrogen (N)</item>
+        <item>2). Phosphorous (P)</item>
+        <item>3). Pottassium (K)</item>
+        <item>4). Temperature</item>
+        <item>5). Humidity</item>
+        <item>6). pH</item>
+        <item>7). Rainfall</item>
+    </string-array>
+    <string name="hyperlink"><a href="https://www.kaggle.com/datasets/atharvaingle/crop-recommendation-dataset">Crop Recommendation</a></string>
+    <string-array name="fitur_desc">
+        <item>
+            Tipe Data : Int64\nBentuk Nilai fitur: Numerik\n\nNitrogen adalah salah satu nutrisi utama yang dibutuhkan tanaman. Ini berperan penting dalam pembentukan protein, enzim, dan klorofil, yang semuanya penting untuk pertumbuhan dan perkembangan tanaman
+        </item>
+        <item>
+            Tipe Data : Int64\nBentuk Nilai fitur: Numerik\n\nFosfor penting untuk pembentukan DNA, RNA, dan ATP (molekul energi utama dalam sel). Ini juga membantu dalam pembentukan akar yang kuat dan perkembangan bunga dan buah.
+        </item>
+        <item>
+            Tipe Data : Int64\nBentuk Nilai fitur: Numerik\n\nKalium membantu dalam berbagai proses fisiologis, termasuk fotosintesis, regulasi air dalam sel, dan pengaktifan enzim. Ini juga membantu meningkatkan ketahanan tanaman terhadap penyakit.
+        </item>
+        <item>
+            Tipe Data : Float64\nBentuk Nilai fitur: Numerik\n\nSuhu yang berpengaruh untuk tanaman, suhu ideal memungkinkan tumbuh optimal dan menghasilkan hasil yang baik
+        </item>
+        <item>
+            Tipe Data : Float64\nBentuk Nilai fitur: Numerik\n\nKelembaban mempengaruhi proses transpirasi dan fotosintesis pada tanaman. Kelembaban yang cukup membantu tanaman menjaga keseimbangan air dan nutrisi.
+        </item>
+        <item>
+            Tipe Data : Float64\nBentuk Nilai fitur: Numerik\n\ntanah mempengaruhi ketersediaan nutrisi bagi tanaman. Tanaman umumnya tumbuh baik pada pH netral hingga sedikit asam (pH 6-7).
+        </item>
+        <item>
+            Tipe Data : Float64\nBentuk Nilai fitur: Numerik\n\nCurah hujan menyediakan air yang diperlukan untuk fotosintesis dan proses metabolisme lainnya pada tanaman.
+        </item>
+    </string-array>
+    <string-array name="dataset_name">
+        <item>Nitrogen (N)</item>
+        <item>Phosphorous (P)</item>
+        <item>Pottassium (K)</item>
+        <item>Temperature</item>
+        <item>Humidity</item>
+        <item>pH</item>
+        <item>Rainfall</item>
+        <item>Label</item>
+    </string-array>
+
+    <string name="desc_arsitektur">Arsitektur model yang digunakan dalam aplikasi ini adalah sebuah Artificial Neural Network (ANN) yang terdiri dari beberapa lapisan (layers).\n\nModel ANN yang digunakan dikembangkan menggunakan pustaka TensorFlow dan Keras. Model ini dilatih untuk memprediksi hasil berdasarkan dataset yang telah dibersihkan dan diproses sebelumnya.
+    </string>
+    <string name="desc_fit">Tensor flow callback EarlyStopping berfungsi untuk menghentikan pelatihan lebih awal jika tidak ada perbaikan pada val_loss selama 10 epoch berturut-turut. ini membantu menceggah overfitting dan mempercepat proses pelatihan.\n\nMelatih model dengan data pelatihan (X_train dan y_train). batch_size=50 mengatur ukuran batch menjadi 50. epochs=300 mengatur jumlah epoch maksimum menjadi 300. validation_split=0.2 menggunakan 20% dari data pelatihan sebagai data validasi. callbacks=[early_stopping] menggunakan callback EarlyStopping selama pelatihan.</string>
+    <string name="compile_data">Compile model menggunakan optimizer adam, loss sparse_categorical_crossentropy, dan metric accuracy untuk mengukur akurasi selama compiling</string>
+    <string name="label_encoding">Pada dataset, ada kolom label yang berupa object, yang dimana isi kolom tersebut harus di transform menjadi numerik.\n\nlabel encoder adalah cara agar merubah object menjadi numerik.</string>
+<string name="desc_modeling">Model yang dibangun menggunakan Keras Sequential memiliki empat lapisan (layers).\n\nA). Input Layer\n\nModel menerima input dengan 7 fitur. Ini ditentukan oleh input_shape=(7,) dalam layer pertama.\n\nB).Hidden Layer 1\n\nLayer pertama dari model ini memiliki 32 neuron. Setiap neuron dalam layer ini menggunakan fungsi aktivasi ReLU yang membantu model menangani non-linearitas dalam data.\n\nC). Hidden Layer 2\n\nLayer kedua memiliki 16 neuron dan juga menggunakan fungsi aktivasi ReLU.\n\nD).Output Layer\n\nLayer output memiliki 22 neuron, yang menunjukkan bahwa model ini dirancang untuk klasifikasi multi-kelas dengan 22 kelas berbeda. Fungsi aktivasi softmax digunakan di layer ini untuk menghasilkan probabilitas dari setiap kelas.</string>
+    <string name="desc_traintest">train_test_split adalah sebuah fungsi dari pustaka scikit-learn di Python yang digunakan untuk membagi dataset menjadi dua subset: data latih (training set) dan data uji (test set)\n\nlakukan standarisasi data yang sudah di split menggunakan Standar Scale\n\nStandarisasi setelah pembagian dataset menjadi data latih dan data uji sangat penting untuk memastikan model bekerja secara efisien dan efektif. Ini membantu dalam mencapai konvergensi yang lebih cepat, meningkatkan performa model, dan menjaga integritas evaluasi model.</string>
+    <string-array name="dataset">
+        <item>90\n85\n60\n74\n78\n69\n69\n94\n89\n68</item>
+        <item>42\n58\n55\n35\n42\n37\n55\n53\n54\n58</item>
+        <item>43\n41\n44\n40\n42\n42\n38\n40\n38\n38</item>
+        <item>20.87974371\n21.77046169\n23.00445915\n26.49109635\n20.13017482\n23.05804872\n22.70883798\n20.27774362\n24.51588066\n23.22397386</item>
+        <item>82.00274423\n80.31964408\n82.3207629\n80.15836264\n81.60487287\n83.37011772\n82.63941394\n82.89408619\n83.53521629999999\n83.03322691</item>
+        <item>6.502985292000001\n7.038096361\n7.840207144\n6.980400905\n7.628472891\n7.073453503\n5.70080568\n5.718627177999999\n6.685346424\n6.336253525</item>
+        <item>202.9355362\n226.6555374\n263.9642476\n242.8640342\n262.7173405\n251.0549998\n271.3248604\n241.9741949\n230.4462359\n221.2091958</item>
+        <item>Rice\nRice\nRice\nRice\nRice\nRice\nRice\nRice\nRice\nRice</item>
+    </string-array>
+</resources>
